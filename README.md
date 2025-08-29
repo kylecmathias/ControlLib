@@ -1,6 +1,6 @@
-# ControlLib
+at# ControlLib
 
-An Arduino library for the Arduino Mega 2560 allowing custom timer settings, interrupts, and asynchronous delays. 
+An Arduino library for the ATmega series of microcontrollers allowing custom timer settings, interrupts, and asynchronous delays. 
 
 ### Currently Supports only timer0 and timer2
 
@@ -32,3 +32,8 @@ Timer2 (8 bit) (used by Arduino for tone generation)
 - ```noTone()```
 - ```analogWrite(9, value)```
 - ```analogWrite(10, value)```
+
+## Hardware
+This library is built for the 8-bit ATmega microcontroller series. 
+
+Documentation on the hardware can be found here: [https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf](https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf)
