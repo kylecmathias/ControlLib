@@ -6,9 +6,9 @@ An Arduino library for the ATmega series of microcontrollers allowing custom tim
 
 ## IMPORTANT NOTES
  
-Timer0 is used by the Arduino core for delay(), millis() and micros() functions. Dont use it unless you will not be using these functions.
+Timer0 is used by the Arduino core for ```delay()```, ```millis()``` and ```micros()``` functions. Dont use it unless you will not be using these functions.
 Timer1 is used by the Arduino core for Servo library, so if you use Servo library, dont use Timer1.
-Timer2 is used by the Arduino core for tone() function, so if you use tone() function, dont use Timer2.
+Timer2 is used by the Arduino core for ```tone()``` function, so if you use ```tone()``` function, dont use Timer2.
 Timers 3, 4 and 5 are not used by the Arduino core, so you can use them freely, although some libraries may use Timer5.
 
 These classes are meant for very low level control over the timers, so you cant use the builtin arduino functions that use the timers you use.
