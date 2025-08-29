@@ -30,6 +30,5 @@ Timer1 (16 bit) (used by Arduino for PWM and Servo control)
 Timer2 (8 bit) (used by Arduino for tone generation)
 - ```tone()```
 - ```noTone()```
- * - analogWrite(9, value)
- * - analogWrite(10, value)
- */
+- ```analogWrite(9, value)```
+- ```analogWrite(10, value)```
