@@ -1,6 +1,6 @@
 # ControlLib
 
-An Arduino library for the ATmega series of microcontrollers allowing custom timer settings, interrupts, and asynchronous delays. 
+An Arduino library for the ATmega series of microcontrollers allowing custom timer settings, dynamic interrupts, and asynchronous delays. 
 
 ### Currently Supports only timer0 and timer2
 
