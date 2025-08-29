@@ -1,4 +1,4 @@
-at# ControlLib
+# ControlLib
 
 An Arduino library for the ATmega series of microcontrollers allowing custom timer settings, interrupts, and asynchronous delays. 
 
