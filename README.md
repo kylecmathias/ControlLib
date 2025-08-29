@@ -1,6 +1,6 @@
 # ControlLib
 
-An Arduino library for the Arduino Mega 2560 allowing custom timer settings and interrupts. 
+An Arduino library for the Arduino Mega 2560 allowing custom timer settings, interrupts, and asynchronous delays. 
 
 ### Currently Supports only timer0 and timer2
 
