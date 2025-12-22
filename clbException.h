@@ -17,8 +17,23 @@
 */
 
 namespace clb {
+    //superclass
+    class Exception {
+        public:
+            void enableExceptionMessages() {
+                _ExceptionMessagesEnabled = true;
+            }
+            void disableExceptionMessages() {
+                _ExceptionMessagesEnabled = false;
+            }
+            bool isExceptionMessagesEnabled() {
+                return _ExceptionMessagesEnabled;
+            }
+        protected:
+            bool _ExceptionMessagesEnabled = true;
+    };
     //warning means you can continue but just be aware of what you're doing. lots of warnings wont break your system, but you should definitely know what youre doing.
-    class Warning {
+    class Warning : public Exception {
     public:
         static void warn(const char* message) {
             static char buffer[256]; 
@@ -29,7 +44,7 @@ namespace clb {
         }
     };
     //critical means something is wrong, you can still continue but you should definitely know what youre doing. lots of criticals mean you should probably try to fix some stuff so your system doesnt break.
-    class Critical {
+    class Critical : public Exception {
     public:
         static void log(const char* message) {
             static char buffer[256];
@@ -40,7 +55,7 @@ namespace clb {
         }
     };
     //fatal means you did something seriously wrong and you cannot continue unless you fix it.
-    class Fatal {
+    class Fatal : public Exception {
     public:
         static void halt(const char* message) {
             static char buffer[256];

@@ -119,9 +119,12 @@ clb::Timer2::~Timer2() {
 }
 
 void clb::Timer2::deactivate() {
+    if (_asyncDelayActive) {
+        stopAsyncDelay();
+    }
+    
     cli();
 
-    s_active_timer2_instance = nullptr;
     TIMSK2 = 0;
     TIFR2 = (BIT0 << OCF2A) | (BIT0 << OCF2B) | (BIT0 << TOV2);
     TCCR2B = 0;
@@ -132,6 +135,8 @@ void clb::Timer2::deactivate() {
     TCNT2 = 0;
 
     sei();
+
+    s_active_timer2_instance = nullptr;
 }
 
 //set the mode in TCCR2A and TCCR2B
@@ -299,6 +304,10 @@ void clb::Timer2::startTimer() {
 }
 
 void clb::Timer2::stopTimer() {
+    if (_asyncDelayActive) {
+        stopAsyncDelay();
+    }
+
     uint8_t _TCCR2B = TCCR2B;
 
     _TCCR2B &= ~(BIT2 | BIT1 | BIT0);

@@ -440,6 +440,24 @@ namespace clb {
         private:
             void syncDelayLogic(uint64_t ticks, clb::TOutputChannel channel) override; //logic for the delay methods
             void asyncDelayLogic(uint64_t ticks, clb::TOutputChannel channel) override; //logic for the non-blocking delay methods
+        public:
+            volatile uint64_t _asyncTargetTicks; //total delay ticks
+            volatile uint64_t _asyncCurrentTicks; //counter for elapsed ticks
+            volatile uint32_t _asyncOverflowsCount; //number of tick cycles
+            volatile uint16_t _asyncRemainingTicksValue; //last ocr value
+            volatile bool _asyncDelayActive; //async delay flag
+            volatile clb::TOutputChannel _asyncDelayActiveChannel; //channel for async delay
+
+            //register save variables for asynchronous mode
+            volatile uint16_t _asyncSavedTCCR1A;
+            volatile uint16_t _asyncSavedTCCR1B;
+            volatile uint16_t _asyncSavedTCNT1;
+            volatile uint16_t _asyncSavedOCR1A;
+            volatile uint16_t _asyncSavedOCR1B;
+            volatile uint16_t _asyncSavedTIMSK1;
+            volatile uint16_t _asyncSavedTIFR1;
+            volatile uint16_t _asyncSavedSREG;
+            
     };
     //subclass timer 3 (16 bits)
     class Timer3 : public Timer {

@@ -129,9 +129,12 @@ clb::Timer0::~Timer0() {
 }
 
 void clb::Timer0::deactivate() {
+    if (_asyncDelayActive) {
+        stopAsyncDelay();
+    }
+
     cli();
 
-    s_active_timer0_instance = nullptr;
     TIMSK0 = 0;
     TIFR0 = (BIT0 << OCF0A) | (BIT0 << OCF0B) | (BIT0 << TOV0);
     TCCR0B = 0;
@@ -142,6 +145,8 @@ void clb::Timer0::deactivate() {
     TCNT0 = 0;
 
     sei(); 
+
+    s_active_timer0_instance = nullptr;
 }
 
 //set the mode in TCCR0A and TCCR0B
@@ -316,6 +321,10 @@ void clb::Timer0::startTimer() {
 
 void clb::Timer0::stopTimer() {
     WARNING("stopTimer() modifies the clock source which halts delay(), millis() and micros() functions, so watch out");
+    if (_asyncDelayActive) {
+        stopAsyncDelay();
+    }
+
     uint8_t _TCCR0B = TCCR0B;
 
     _TCCR0B &= ~(BIT2 | BIT1 | BIT0);
